@@ -3,6 +3,7 @@ import os
 import json
 import tweepy
 import requests
+import base64
 
 # consumer_key = os.environ.get("CONSUMER_KEY")
 # consumer_secret = os.environ.get("CONSUMER_SECRET")
@@ -27,6 +28,14 @@ image_extension = parsed_url.split('.')[-1]
 img_data = requests.get(parsed_url).content
 with open('shiba.' + image_extension, 'wb') as handler:
     handler.write(img_data)
+ 
+# In order to upload an image to Twitter, the image needs to be base64 format - we can do that using the base64 module
+with open('shiba.' + image_extension, 'rb') as img_file:
+    b64_string = base64.b64encode(img_file.read())
+    
+# If you have issues and need to remove the b from the prefix of base64 use this:
+# b64_string.decode('utf-8)
+print(b64_string)
 
 # Next steps = use twitter API to upload image to twitter and get the returned media_id
 # This media_id will be used to create a tweet
