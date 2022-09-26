@@ -14,8 +14,6 @@ CLIENT_SECRET = os.environ.get("API_KEY_SECRET")
 ACCESS_TOKEN = os.environ.get("ACCESS_TOKEN")
 ACCESS_TOKEN_SECRET = os.environ.get("ACCESS_TOKEN_SECRET")
 
-
-
 oauth = OAuth1(CONSUMER_KEY,
   client_secret=CLIENT_SECRET,
   resource_owner_key=ACCESS_TOKEN,
