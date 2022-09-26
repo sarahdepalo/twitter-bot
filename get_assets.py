@@ -31,9 +31,7 @@ def fetch_quote():
         
     # Parse the results and assign quote and author
     data = res.json()[0]
-    quote = data["q"]
-    author = data["a"]
+    return data
+ 
 
     
-fetch_shiba()
-fetch_quote()

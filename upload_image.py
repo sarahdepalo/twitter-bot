@@ -14,7 +14,7 @@ CLIENT_SECRET = os.environ.get("API_KEY_SECRET")
 ACCESS_TOKEN = os.environ.get("ACCESS_TOKEN")
 ACCESS_TOKEN_SECRET = os.environ.get("ACCESS_TOKEN_SECRET")
 
-IMAGE_FILENAME = './shiba.jpg'
+
 
 oauth = OAuth1(CONSUMER_KEY,
   client_secret=CLIENT_SECRET,
@@ -139,20 +139,12 @@ class ImageTweet(object):
     self.check_status()
 
 
-  def tweet(self):
+  def tweet(self, quote, author):
     # Publishes Tweet
     request_data = {
-      'status': 'I just uploaded an image with the @TwitterAPI.',
+      'status': f'"{quote}" \n {author}',
       'media_ids': self.media_id
     }
 
     req = requests.post(url=POST_TWEET_URL, data=request_data, auth=oauth)
     print(req.json())
-
-
-if __name__ == '__main__':
-  tweet = ImageTweet(IMAGE_FILENAME)
-  tweet.upload_init()
-  tweet.upload_append()
-  tweet.upload_finalize()
-  tweet.tweet()
