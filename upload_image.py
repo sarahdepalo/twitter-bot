@@ -137,10 +137,10 @@ class ImageTweet(object):
     self.check_status()
 
 
-  def tweet(self, quote, author):
+  def tweet(self, quote, author, username=""):
     # Publishes Tweet
     request_data = {
-      'status': f'"{quote}" \n {author}',
+      'status': f'{"@" + username + " Bork Bork!"}\n"{quote}"\n{author}',
       'media_ids': self.media_id
     }
 

@@ -8,8 +8,8 @@ if __name__ == '__main__':
   get_assets.fetch_shiba()
   # Gets the inspirational quote and author from the API
   quote_data = get_assets.fetch_quote()
-  quote = quote_data["q"]
-  author = quote_data["a"]
+  quote = quote_data["quote"]
+  author = quote_data["author"]
   # Starts the image uploading and tweet process.  
   tweet = upload_image.ImageTweet(IMAGE_FILENAME)
   tweet.upload_init()

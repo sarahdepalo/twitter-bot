@@ -29,9 +29,9 @@ def fetch_quote():
     except:
         print("Error while calling API")
         
-    # Parse the results and assign quote and author
+    # Parse the results and return quote and author
     data = res.json()[0]
-    return data
+    return {'quote': data['q'], 'author': data['a']}
  
 
     
