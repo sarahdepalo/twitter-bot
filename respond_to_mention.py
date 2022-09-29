@@ -1,30 +1,18 @@
-import os
 import requests
 from requests_oauthlib import OAuth1
 import get_assets
 import upload_image
-from main import IMAGE_FILENAME
+import constants as const
 
-USERNAME = "daily_shiba_inu"
-ID_FILE = "last_mention_id.txt"
-
-USER_ID_ENPOINT = "https://api.twitter.com/2/users/by"
-USERNAME_ENDPOINT = "https://api.twitter.com/2/users"
-MENTIONS_ENDPOINT = "https://api.twitter.com/2/users"
-
-CONSUMER_KEY = os.environ.get("API_KEY")
-CLIENT_SECRET = os.environ.get("API_KEY_SECRET")
-ACCESS_TOKEN = os.environ.get("ACCESS_TOKEN")
-ACCESS_TOKEN_SECRET = os.environ.get("ACCESS_TOKEN_SECRET")
-
-oauth = OAuth1(CONSUMER_KEY,
-               client_secret=CLIENT_SECRET,
-               resource_owner_key=ACCESS_TOKEN,
-               resource_owner_secret=ACCESS_TOKEN_SECRET)
+# Authenticate the connection
+oauth = OAuth1(const.CONSUMER_KEY,
+               client_secret=const.CLIENT_SECRET,
+               resource_owner_key=const.ACCESS_TOKEN,
+               resource_owner_secret=const.ACCESS_TOKEN_SECRET)
 
 # Saves the latest mention_id to txt file
 def save_mention_id(id):
-    f = open(ID_FILE, "w")
+    f = open(const.ID_FILE, "w")
     f.write(str(id))
     f.close()
     print("File updated with latest mention ID")
@@ -32,7 +20,7 @@ def save_mention_id(id):
 
 # Retrieves the id from the last time the script ran
 def get_mention_id():
-    f = open(ID_FILE, "r")
+    f = open(const.ID_FILE, "r")
     # Strip removes any whitespace from beginning and end of the string
     last_id = f.read().strip()
     f.close()
@@ -41,7 +29,7 @@ def get_mention_id():
 # Get user ID to use to look up mentions
 def get_user_id():
     req = requests.get(
-        url=f"{USER_ID_ENPOINT}?usernames={USERNAME}", auth=oauth)
+        url=f"{const.USERS_ENDPOINT}/by?usernames={const.USERNAME}", auth=oauth)
 
     res = req.json()
     user_id = res["data"][0]["id"]
@@ -51,7 +39,7 @@ def get_user_id():
 # Takes author_id and returns username
 def get_username(id):
     req = requests.get(
-        url=f"{USERNAME_ENDPOINT}/{id}", auth=oauth)
+        url=f"{const.USERS_ENDPOINT}/{id}", auth=oauth)
     res = req.json()
     username = res["data"]["username"]
     return username
@@ -62,7 +50,7 @@ def respond_to_mentions(user_id):
     # since_id returns results with tweet ID that is more recent than last_id
     # Adding the expansions is necessary to get the author ids 
     req = requests.get(
-        url=f"{MENTIONS_ENDPOINT}/{user_id}/mentions?since_id={last_id}&expansions=author_id", auth=oauth)
+        url=f"{const.USERS_ENDPOINT}/{user_id}/mentions?since_id={last_id}&expansions=author_id", auth=oauth)
 
     res = req.json()
 
@@ -89,13 +77,15 @@ def respond_to_mentions(user_id):
         quote = quote_data["quote"]
         author = quote_data["author"]
         
+        text = f"@{mention_username} bork bork!"
+        
         # Start the image uploading process
-        tweet = upload_image.ImageTweet(IMAGE_FILENAME)
+        tweet = upload_image.ImageTweet(const.IMAGE_FILENAME)
         tweet.upload_init()
         tweet.upload_append()
         tweet.upload_finalize()
         # Tweets the image and quote + author @the_user
-        tweet.tweet(quote, author, mention_username)
+        tweet.tweet(quote, author, text)
 
     # Save the newest id in a txt file to be used the next time the script runs to avoid repeated mentions
     new_id = res["meta"]["newest_id"]

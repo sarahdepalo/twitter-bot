@@ -1,7 +1,7 @@
 import get_assets
 import upload_image
+from constants import IMAGE_FILENAME as image
 
-IMAGE_FILENAME = './shiba.jpg'
 
 if __name__ == '__main__':
   # Updates the local file ./shiba.jpg to be used in the tweet
@@ -11,7 +11,7 @@ if __name__ == '__main__':
   quote = quote_data["quote"]
   author = quote_data["author"]
   # Starts the image uploading and tweet process.  
-  tweet = upload_image.ImageTweet(IMAGE_FILENAME)
+  tweet = upload_image.ImageTweet(image)
   tweet.upload_init()
   tweet.upload_append()
   tweet.upload_finalize()
