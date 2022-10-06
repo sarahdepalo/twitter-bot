@@ -1,7 +1,7 @@
 import requests
 from requests_oauthlib import OAuth1
 import get_assets
-import upload_image
+import publish
 import constants as const
 
 # Authenticate the connection
@@ -80,12 +80,12 @@ def respond_to_mentions(user_id):
         text = f"@{mention_username} bork bork!"
         
         # Start the image uploading process
-        tweet = upload_image.ImageTweet(const.IMAGE_FILENAME)
-        tweet.upload_init()
-        tweet.upload_append()
-        tweet.upload_finalize()
+        image = publish.ImageTweet(const.IMAGE_FILENAME)
+        image.upload_init()
+        image.upload_append()
+        media_id = image.upload_finalize()
         # Tweets the image and quote + author @the_user
-        tweet.tweet(quote, author, text)
+        publish.tweet(quote, author, media_id, text)
 
     # Save the newest id in a txt file to be used the next time the script runs to avoid repeated mentions
     new_id = res["meta"]["newest_id"]

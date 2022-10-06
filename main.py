@@ -1,5 +1,5 @@
 import get_assets
-import upload_image
+import publish
 from constants import IMAGE_FILENAME as image
 
 
@@ -11,9 +11,9 @@ if __name__ == '__main__':
   quote = quote_data["quote"]
   author = quote_data["author"]
   # Starts the image uploading and tweet process.  
-  tweet = upload_image.ImageTweet(image)
-  tweet.upload_init()
-  tweet.upload_append()
-  tweet.upload_finalize()
+  image = publish.ImageTweet(image)
+  image.upload_init()
+  image.upload_append()
+  media_id = image.upload_finalize()
   # Tweets the image and quote + author   
-  tweet.tweet(quote, author)
+  publish.tweet(quote, author, media_id)
