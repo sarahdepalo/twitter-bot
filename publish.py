@@ -91,6 +91,7 @@ class ImageTweet(object):
 
         req = requests.post(url=const.MEDIA_UPLOAD_ENDPOINT,
                             data=request_data, auth=oauth)
+        
         print(req.json())
 
         self.processing_info = req.json().get('processing_info', None)
@@ -139,4 +140,4 @@ def tweet(quote, author, media_id, text=""):
     }
     print("Publishing Tweet...")
     req = requests.post(url=const.POST_TWEET_ENDPOINT, data=request_data, auth=oauth)
-    print(req.json())
+    print("Tweet Published")

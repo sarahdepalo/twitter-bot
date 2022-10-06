@@ -44,6 +44,17 @@ def get_username(id):
     username = res["data"]["username"]
     return username
 
+def like_tweet(tweet, user_id):
+    print("Liking Tweet...")
+    
+    tweet_id = str(tweet["id"])    
+    request_data = {
+        'tweet_id': tweet_id
+    }
+    
+    req = requests.post(url=f"{const.USERS_ENDPOINT}/{user_id}/likes", json=request_data, auth=oauth)
+    print("Tweet Like Successful: ", req.json()["data"]["liked"])
+
 # Get all new mentions
 def respond_to_mentions(user_id):
     last_id = get_mention_id()
@@ -68,7 +79,9 @@ def respond_to_mentions(user_id):
         author_id =  mention["author_id"]
         # Get username to respond to
         mention_username = get_username(author_id)
-
+        
+        # Like tweet - need the mention id and your own user_id gathered previously
+        like_tweet(mention, user_id)
         # Generate new image
         get_assets.fetch_shiba()
         
