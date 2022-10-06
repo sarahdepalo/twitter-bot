@@ -8,6 +8,7 @@ ID_FILE = "last_mention_id.txt"
 USERNAME = "daily_shiba_inu"
 
 # Twitter API Endpoints
+# Chunk uploading enpoint used for INIT - FINALIZE
 MEDIA_UPLOAD_ENDPOINT = 'https://upload.twitter.com/1.1/media/upload.json'
 POST_TWEET_ENDPOINT = 'https://api.twitter.com/1.1/statuses/update.json'
 USERS_ENDPOINT = "https://api.twitter.com/2/users"
