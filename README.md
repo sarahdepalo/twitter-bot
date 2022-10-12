@@ -17,11 +17,11 @@ for an inspirational quote!
  This bot was created with love and as a way to get back into Python coding. I've always been interested in automation and figured this was a great way to learn more about automation with Python. 
  </p>
  
- <p>The bot is a Flask application hosted on AWS. Currently, the bot tweets an inspirational quote from the <a href="https://zenquotes.io/api/random" target="_blank">Zen Quotes API</a> alongside a random Shiba Inu image from the <a href="http://shibe.online/" target="_blank">Shibe API</a>. The Twitter API is then used to upload and post the image. 
+ <p>The bot is a Flask application hosted on AWS. Currently, the bot tweets an inspirational quote from the <a href="https://zenquotes.io/api" target="_blank">Zen Quotes API</a> alongside a random Shiba Inu image from the <a href="http://shibe.online/" target="_blank">Shibe API</a>. The Twitter API is then used to upload and post the image. 
 </p>
 
 <p>
-<img src="./public/shiba_icon.png" width="20"/>The bot also checks for mentions every 5 minutes and will respond with some wisdom!
+<img src="./public/shiba_icon.png" width="20"/>The bot also checks for mentions every 5 minutes and will respond to them with some wisdom!
 </p>
 
 <h2 align= "center">
