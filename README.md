@@ -57,6 +57,6 @@ $ python3 daily_post.py
 
 🌸 Happy coding! 🌸
 
-<p align="center">
+<p align="left">
 <img src="./public/mention_tweet.png"  width="500"/>
 </p>
