@@ -13,9 +13,8 @@ def index():
 
 
 def post():
-    daily_post()
+    daily_post.post()
     print("Success!")
-
 
 def reply():
     user_id = respond.get_user_id()

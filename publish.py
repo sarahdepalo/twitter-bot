@@ -6,7 +6,6 @@ import requests
 import constants as const
 from requests_oauthlib import OAuth1
 
-
 oauth = OAuth1(const.CONSUMER_KEY,
                client_secret=const.CLIENT_SECRET,
                resource_owner_key=const.ACCESS_TOKEN,
