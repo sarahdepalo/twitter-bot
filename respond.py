@@ -104,6 +104,3 @@ def respond_to_mentions(user_id):
     new_id = res["meta"]["newest_id"]
     save_mention_id(new_id)
 
-
-user_id = get_user_id()
-respond_to_mentions(user_id)

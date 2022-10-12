@@ -1,6 +1,7 @@
 import requests
 import json
 
+
 def fetch_shiba():
     # Get the Shiba Inu image url from the Shiba API
     shiba_api = "http://shibe.online/api/shibes?count=1&urls=true&httpsUrls=true"
