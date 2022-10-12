@@ -55,8 +55,8 @@ $ pip install -r requirements.txt
 $ python3 daily_post.py
 ```
 
+🌸 Happy coding! 🌸
+
 <p align="center">
-<img src="./public/mention_tweet.png" height="20"/>
-Tweet <a href="https://twitter.com/daily_shiba_inu" target="_blank">@daily_shiba_inu</a>
-for an inspirational quote!
+<img src="./public/mention_tweet.png"  width="500"/>
 </p>
