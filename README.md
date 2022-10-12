@@ -1,11 +1,3 @@
-<style>
-
-svg {
-  height: 10px;
-}
-
-</style>
-
 <h1 align= "center">
  Inspirational Shiba Inu Twitter Bot
 </h1>
