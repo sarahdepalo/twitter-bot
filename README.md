@@ -1,3 +1,11 @@
+<style>
+
+svg {
+  height: 10px;
+}
+
+</style>
+
 <h1 align= "center">
  Inspirational Shiba Inu Twitter Bot
 </h1>
@@ -8,8 +16,10 @@
 </p>
 
 <p align="center">
- 
-<img src="./public/twitter.png" height="20"> Tweet <a href="https://twitter.com/daily_shiba_inu" target="_blank">@daily_shiba_inu</a> for an inspirational quote!</p>
+<img src="./public/twitter.png" height="20"/>
+Tweet <a href="https://twitter.com/daily_shiba_inu" target="_blank">@daily_shiba_inu</a>
+for an inspirational quote!
+</p>
 
 <p>
  This bot was created with love and as a way to get back into Python coding. I've always been interested in automation and figured this was a great way to learn more about automation with Python. 
